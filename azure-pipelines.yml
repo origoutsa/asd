@@ -60,7 +60,9 @@ steps:
 
 - script: |
     pnpm install
-    pnpm run build
+    pnpm run build --verbose
+    echo "##[debug]pnpm run build finished. Checking working directory..."
+    dir vue-project
   workingDirectory: vue-project
   displayName: 'Install and Build Vue app'
 
