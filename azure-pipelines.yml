@@ -58,19 +58,24 @@ steps:
 - script: npm install -g pnpm
   displayName: 'Install pnpm globally'
 
-- script: |
-    pnpm install
-    pnpm run build
+- script: pnpm approve-builds
   workingDirectory: vue-project
-  displayName: 'Install and Build Vue app'
-  continueOnError: true
+  displayName: 'Approve dependency builds'
+
+- script: pnpm install
+  workingDirectory: vue-project
+  displayName: 'Install Dependencies'
+
+- script: pnpm run build
+  workingDirectory: vue-project
+  displayName: 'Build Vue App'
 
 - script: |
     echo "Checking for the dist folder..."
     if exist vue-project\dist (
       echo "dist folder found. Proceeding with publish."
     ) else (
-      echo "Error: dist folder not found. Check the build logs for details."
+      echo "Error: dist folder not found."
       exit 1
     )
   displayName: 'Verify dist folder exists (Windows)'
