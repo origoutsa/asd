@@ -26,10 +26,9 @@ steps:
   displayName: "Use Node.js 18"
 
 - script: |
-    npm install -g pnpm       # ensure pnpm is available
     cd vue-project
-    pnpm install
-    pnpm run build
+    npm install
+    npm run build
   displayName: "Install deps & build Vue app"
 
 - task: PublishPipelineArtifact@1
