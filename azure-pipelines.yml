@@ -30,8 +30,9 @@ steps:
     cd vue-project
     pnpm install
     pnpm run build
-    echo "=== List contents after build ==="
+    echo "=== Contents after build ==="
     dir
+  shell: cmd
   displayName: "Install deps & build Vue app"
 
 
