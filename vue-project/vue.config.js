@@ -1,13 +1,13 @@
-// const { defineConfig } = require('@vue/cli-service')
-// module.exports = defineConfig({
-//   transpileDependencies: true
-// })
-
-
-const path = require('path');
-const { defineConfig } = require('@vue/cli-service');
-
+const { defineConfig } = require('@vue/cli-service')
 module.exports = defineConfig({
-  transpileDependencies: true,
-  outputDir: path.resolve(__dirname, 'dist')
-});
+  transpileDependencies: true
+})
+
+
+// const path = require('path');
+// const { defineConfig } = require('@vue/cli-service');
+
+// module.exports = defineConfig({
+//   transpileDependencies: true,
+//   outputDir: path.resolve(__dirname, 'dist')
+// });
