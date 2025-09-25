@@ -64,6 +64,16 @@ steps:
   workingDirectory: vue-project
   displayName: 'Install and Build Vue app'
 
+- script: |
+    echo "Checking for the dist folder..."
+    if [ -d "vue-project/dist" ]; then
+      echo "dist folder found. Proceeding with publish."
+    else
+      echo "Error: dist folder not found."
+      exit 1
+    fi
+  displayName: 'Verify dist folder exists'
+
 - task: PublishPipelineArtifact@1
   inputs:
     targetPath: 'vue-project/dist'
