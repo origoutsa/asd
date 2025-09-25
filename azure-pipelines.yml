@@ -56,10 +56,10 @@ steps:
   displayName: "Use Node.js 18"
 
 - script: |
-    cd .\vue-project\
     npm install
     npm run build
   displayName: "Build Vue app"
+  workingDirectory: vue-project
 
 - task: PublishPipelineArtifact@1
   inputs:
