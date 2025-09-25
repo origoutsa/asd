@@ -60,7 +60,7 @@ steps:
   - script: |
       npm install -g pnpm
       pnpm install
-      pnpm build
+      pnpm run build
     workingDirectory: vue-project
     displayName: 'Build Vue app with pnpm'
 
