@@ -56,7 +56,7 @@ steps:
   displayName: "Use Node.js 18"
 
 - script: |
-    cd vue-project
+    cd .\vue-project\
     npm install
     npm run build
   displayName: "Build Vue app"
