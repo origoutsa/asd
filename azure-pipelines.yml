@@ -29,6 +29,7 @@ steps:
     cd vue-project
     npm install
     npm run build
+    dir
   displayName: "Install deps & build Vue app"
 
 - task: PublishPipelineArtifact@1
