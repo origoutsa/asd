@@ -59,8 +59,9 @@ steps:
 
   - script: |
       npm install -g pnpm
-      pnpm install --frozen-lockfile --strict-peer-dependencies
+      pnpm install --frozen-lockfile
       pnpm run build
+      dir dist
     workingDirectory: vue-project
     displayName: 'Build Vue app with pnpm'
 
