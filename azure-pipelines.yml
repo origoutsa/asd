@@ -56,13 +56,10 @@ steps:
   displayName: "Use Node.js 18"
 
 - script: |
-    npm install -g pnpm
     cd vue-project
-    pnpm install
-    pnpm run build
-    echo "=== Contents after build ==="
-    dir
-  displayName: "Install deps & build Vue app"
+    npm install
+    npm run build
+  displayName: "Build Vue app"
 
 - task: PublishPipelineArtifact@1
   inputs:
