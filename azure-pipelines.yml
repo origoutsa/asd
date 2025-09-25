@@ -66,13 +66,13 @@ steps:
 
 - script: |
     echo "Checking for the dist folder..."
-    if [ -d "vue-project/dist" ]; then
+    if exist vue-project\dist (
       echo "dist folder found. Proceeding with publish."
-    else
+    ) else (
       echo "Error: dist folder not found."
       exit 1
-    fi
-  displayName: 'Verify dist folder exists'
+    )
+  displayName: 'Verify dist folder exists (Windows)'
 
 - task: PublishPipelineArtifact@1
   inputs:
