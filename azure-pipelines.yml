@@ -44,29 +44,25 @@
 #   displayName: "Publish Vue dist folder"
 
 trigger:
-  branches:
-    include:
-      - main
+- main
 
 pool:
-  name: Default
+  vmImage: 'windows-latest'
 
 steps:
-  - task: NodeTool@0
-    inputs:
-      versionSpec: '18.x'
-    displayName: 'Use Node.js 18'
+- task: NodeTool@0
+  inputs:
+    versionSpec: '18.x'
+  displayName: 'Use Node.js 18'
 
-  - script: |
-      npm install -g pnpm
-      pnpm install --frozen-lockfile
-      pnpm run build
-      dir dist
-    workingDirectory: vue-project
-    displayName: 'Build Vue app with pnpm'
+- script: |
+    pnpm install
+    pnpm run build
+  workingDirectory: vue-project
+  displayName: 'Install and Build Vue app'
 
-  - task: PublishPipelineArtifact@1
-    inputs:
-      targetPath: 'vue-project/dist'
-      artifact: 'vue-dist'
-    displayName: 'Publish Vue dist folder'
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: 'vue-project/dist'
+    artifact: 'vue-dist'
+  displayName: 'Publish Vue dist folder'
