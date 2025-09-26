@@ -6,9 +6,7 @@
       check out the
       <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
     </p>
-    <h3>Installed CLI Plugins
-      
-    </h3>
+    <h3>Installed CLI Plugins</h3>
     <ul>
       <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
       <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
@@ -34,11 +32,13 @@
 
 <script>
 export default {
-  name: 'HelloWorld', 
+  name: 'HelloWorld',
   props: {
     msg: String
   }
 }
+
+const unused = 'asd'
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -48,7 +48,7 @@ h3 {
 }
 ul {
   list-style-type: none;
-  padding: 0
+  padding: 0;
 }
 li {
   display: inline-block;
