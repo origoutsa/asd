@@ -66,9 +66,9 @@ steps:
   workingDirectory: vue-project
   displayName: 'Install Dependencies'
 
-- script: pnpm run lint || true
+- powershell: pnpm run lint; $true
   workingDirectory: vue-project
-  displayName: 'Run ESLint'
+  displayName: 'Run ESLint (report-only)'
 
 - script: pnpm run test
   workingDirectory: vue-project
