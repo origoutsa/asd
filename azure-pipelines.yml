@@ -84,3 +84,11 @@ steps:
     targetPath: 'vue-project/dist'
     artifact: 'vue-dist'
   displayName: 'Publish Vue dist folder'
+
+- script: |
+    git config --global user.email "ci@example.com"
+    git config --global user.name "CI Bot"
+    git remote set-url origin https://$(GITHUB_TOKEN)@github.com/origoutsa/asd.git
+    pnpm run deploy
+  workingDirectory: vue-project
+  displayName: 'Deploy to GitHub Pages'
