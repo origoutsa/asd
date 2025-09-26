@@ -1,0 +1,94 @@
+# # Starter pipeline
+# # Start with a minimal pipeline that you can customize to build and deploy your code.
+# # Add steps that build, run tests, deploy, and more:
+# # https://aka.ms/yaml
+
+# trigger:
+# - main
+
+# pool:
+# # vmImage: ubuntu-latest
+#   name: Default
+
+# # steps:
+# # - script: echo Hello, world!
+# #   displayName: 'Run a one-line script'
+
+# # - script: |
+# #     echo Add other tasks to build, test, and deploy your project.
+# #     echo See https://aka.ms/yaml
+# #   displayName: 'Run a multi-line script'
+
+# steps:
+# - task: NodeTool@0
+#   inputs:
+#     versionSpec: '18.x'
+#   displayName: "Use Node.js 18"
+
+# - script: |
+#     npm install -g pnpm
+#     cd vue-project
+#     pnpm install
+#     pnpm run build
+#     echo "=== Contents after build ==="
+#     dir
+#   shell: cmd
+#   displayName: "Install deps & build Vue app"
+
+
+# - task: PublishPipelineArtifact@1
+#   inputs:
+#     targetPath: 'vue-project/dist'
+#     artifact: 'vue-dist'
+#     publishLocation: 'pipeline'
+#   displayName: "Publish Vue dist folder"
+
+trigger:
+- main
+
+pool:
+  name: Default
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '18.x'
+  displayName: 'Use Node.js 18'
+
+- script: npm install -g pnpm
+  displayName: 'Install pnpm globally'
+
+- script: pnpm approve-builds
+  workingDirectory: vue-project
+  displayName: 'Approve dependency builds'
+
+- script: pnpm install
+  workingDirectory: vue-project
+  displayName: 'Install Dependencies'
+
+- script: pnpm run lint
+  workingDirectory: vue-project
+  displayName: 'Run ESLint'
+  continueOnError: true
+
+- script: pnpm run test
+  workingDirectory: vue-project
+  displayName: 'Run Unit Tests'
+
+- script: pnpm run build
+  workingDirectory: vue-project
+  displayName: 'Build Vue App'
+
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: 'vue-project/dist'
+    artifact: 'vue-dist'
+  displayName: 'Publish Vue dist folder'
+
+- script: |
+    git config --global user.email "ci@example.com"
+    git config --global user.name "CI Bot"
+    git remote set-url origin https://$(GITHUB_TOKEN)@github.com/origoutsa/asd.git
+    pnpm run deploy
+  workingDirectory: vue-project
+  displayName: 'Deploy to GitHub Pages'
