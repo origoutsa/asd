@@ -38,7 +38,7 @@ export default {
   }
 }
 
-const unused = 'asd'
+const unused = 'asde'
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
