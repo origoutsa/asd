@@ -66,13 +66,13 @@ steps:
   workingDirectory: vue-project
   displayName: 'Install Dependencies'
 
-# - script: pnpm run lint
-#   workingDirectory: vue-project
-#   displayName: 'Run ESLint'
+- script: pnpm run lint
+  workingDirectory: vue-project
+  displayName: 'Run ESLint'
 
-# - script: pnpm run test
-#   workingDirectory: vue-project
-#   displayName: 'Run Unit Tests'
+- script: pnpm run test
+  workingDirectory: vue-project
+  displayName: 'Run Unit Tests'
 
 - script: pnpm run build
   workingDirectory: vue-project
